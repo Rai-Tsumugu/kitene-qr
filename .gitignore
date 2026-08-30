@@ -1,0 +1,13 @@
+# Local and generated app files
+app/node_modules/
+app/dist/
+app/.wrangler/
+app/.dev.vars
+app/.env.local
+app/.staging.secrets
+app/artifacts/private/
+*.log
+*.sqlite
+*.sqlite-shm
+*.sqlite-wal
+.DS_Store

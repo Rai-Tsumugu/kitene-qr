@@ -1,0 +1,56 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "machiawase-qr-local",
+  "main": "src/worker.ts",
+  "compatibility_date": "2026-08-29",
+  "assets": {
+    "directory": "./dist",
+    "binding": "ASSETS",
+    "not_found_handling": "single-page-application",
+    "run_worker_first": ["/api/*", "/join/*", "/manage/*"]
+  },
+  "d1_databases": [
+    {
+      "binding": "DB",
+      "database_name": "machiawase-qr-local",
+      "database_id": "00000000-0000-0000-0000-000000000000",
+      "migrations_dir": "migrations"
+    }
+  ],
+  "vars": {
+    "ENVIRONMENT": "local",
+    "BUILD_REVISION": "dev"
+  },
+  "env": {
+    "staging": {
+      "name": "machiawase-qr-staging",
+      "vars": {
+        "ENVIRONMENT": "staging",
+        "BUILD_REVISION": "staging"
+      },
+      "d1_databases": [
+        {
+          "binding": "DB",
+          "database_name": "machiawase-qr-staging",
+          "database_id": "b0b91fe2-0b40-4249-b7d5-a69a1640ebea",
+          "migrations_dir": "migrations"
+        }
+      ]
+    },
+    "production": {
+      "name": "machiawase-qr-production",
+      "vars": {
+        "ENVIRONMENT": "production",
+        "BUILD_REVISION": "production"
+      },
+      "d1_databases": [
+        {
+          "binding": "DB",
+          "database_name": "machiawase-qr-production",
+          "database_id": "585e5e8e-5d22-4421-a467-e41f0f20339d",
+          "migrations_dir": "migrations"
+        }
+      ]
+    }
+  }
+}

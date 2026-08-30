@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="color-scheme" content="light" />
+    <title>まちあわせQR — UIプロトタイプ</title>
+    <link rel="stylesheet" href="styles.css" />
+    <script src="script.js" defer></script>
+  </head>
+  <body>
+    <header class="topbar">
+      <div>
+        <p class="eyebrow">PROTOTYPE / MOCK</p>
+        <h1>まちあわせQR</h1>
+      </div>
+      <button class="quiet-button" id="reset-button" type="button">初期状態に戻す</button>
+    </header>
+
+    <div class="mock-notice" role="note">
+      これはUI確認用のモックです。外部送信・保存・実トークンはありません。
+    </div>
+
+    <main>
+      <section class="scenario-bar" aria-labelledby="scenario-title">
+        <div>
+          <p class="eyebrow" id="scenario-title">状態確認</p>
+          <p class="scenario-help">通常導線のほか、実装で必要な状態も確認できます。</p>
+        </div>
+        <label>
+          <span>表示シナリオ</span>
+          <select id="scenario-select">
+            <option value="normal">通常の90秒導線</option>
+            <option value="loading">読み込み中</option>
+            <option value="empty">回答待ち（空）</option>
+            <option value="invalid">無効な招待</option>
+            <option value="expired">期限切れ</option>
+            <option value="offline">オフライン / 通信失敗</option>
+          </select>
+        </label>
+      </section>
+
+      <nav class="role-tabs" aria-label="表示する立場">
+        <button class="role-tab is-active" type="button" data-role="participant" aria-pressed="true">Nさん側</button>
+        <button class="role-tab" type="button" data-role="host" aria-pressed="false">誘い手側</button>
+      </nav>
+
+      <section class="phone-stage" aria-live="polite">
+        <article class="phone participant-phone is-mobile-active" data-phone="participant" aria-label="Nさん側の画面">
+          <div class="phone-chrome"><span>9:41</span><span>●●●</span></div>
+          <div class="screen" id="participant-screen"></div>
+        </article>
+
+        <div class="sync-mark" aria-hidden="true">
+          <span>選択が約束に変わる</span>
+          <b>↔</b>
+        </div>
+
+        <article class="phone host-phone" data-phone="host" aria-label="誘い手側の画面">
+          <div class="phone-chrome"><span>9:41</span><span>●●●</span></div>
+          <div class="screen" id="host-screen"></div>
+        </article>
+      </section>
+
+      <section class="feedback" aria-labelledby="feedback-title">
+        <div>
+          <p class="eyebrow">OWNER FEEDBACK</p>
+          <h2 id="feedback-title">触って感じた違和感を残す</h2>
+          <p>本人確認用。この端末のメモだけに表示し、送信はしません。</p>
+        </div>
+        <form id="feedback-form">
+          <label for="feedback-input">たとえば「断りづらい」「待ち合わせが先に見たい」</label>
+          <textarea id="feedback-input" rows="3" maxlength="240" placeholder="気になったことを短く"></textarea>
+          <div class="feedback-actions">
+            <span id="feedback-status" role="status"></span>
+            <button class="primary-button" type="submit">この画面にメモ</button>
+          </div>
+        </form>
+      </section>
+    </main>
+  </body>
+</html>

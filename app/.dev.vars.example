@@ -1,0 +1,2 @@
+# Generate a random local-only value. Never reuse it in staging.
+DEMO_ADMIN_SECRET=
